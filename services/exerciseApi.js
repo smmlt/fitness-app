@@ -20,3 +20,21 @@ export async function fetchExercises(limit = 10) {
     return [];
   }
 }
+
+export async function fetchExercisesByBodyPart(bodyPartName) {
+  try {
+    const response = await axios.get(`${BASE_URL}/api/v1/bodyparts/${bodyPartName}/exercises`, {
+      headers: {
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+      },
+      params: { 
+        bodyPartName: bodyPartName
+      }
+    });
+    return response.data;
+  } catch (err) {
+    console.error('Помилка API:', err.message);
+    return [];
+  }
+}
