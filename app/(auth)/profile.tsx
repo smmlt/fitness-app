@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Index() {
+export default function Profile() {
 
-    const title = 'Головна сторінка';
+    const title = 'Профіль користувача';
 
     const styles = StyleSheet.create({
         container: {

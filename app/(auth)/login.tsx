@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Index() {
+export default function Login() {
 
-    const title = 'Головна сторінка';
+    const title = 'Екран входу';
 
     const styles = StyleSheet.create({
         container: {
