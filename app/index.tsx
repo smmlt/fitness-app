@@ -1,27 +1,31 @@
-import { View, Text, StyleSheet } from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
+import {Redirect} from 'expo-router'
+import {auth} from '../constants/FirebaseConfig'
+export default  function Workout()
+{
+    const title = 'Index'
 
-export default function Index() {
-
-    const title = 'Головна сторінка';
+    if (auth.currentUser)
+    {
+        return <Redirect href='/(tabs)'/>
+    }
 
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
+            flex: 1, justifyContent: 'center',
+            alignItems: 'center'
         },
         titleText: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            marginTop: 20,
-            color: 'purple',
-        },
+            fontSize: 16,
+            fontWeight: '500',
+            color: 'purple'
+        }
     })
 
     return (
         <View style={styles.container}>
             <Text style={styles.titleText}>{title}</Text>
+            <ActivityIndicator size='large' color={'#007aff'}/>
         </View>
     )
-}       
+}

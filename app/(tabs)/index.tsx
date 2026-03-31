@@ -1,65 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Image } from 'react-native';
-import { fetchExercises, fetchExercisesByBodyPart } from '../../services/exerciseApi';
+import React, { useEffect, useState} from 'react'
+import {
+    View, Text, FlatList, TouchableOpacity, StyleSheet,
+    ActivityIndicator, Image
+} from 'react-native'
 
+import {fetchExercisesByBodyPart} from '../../services/exerciseApi'
+import {useRouter} from "expo-router";
 
 const CATEGORIES = [
-    'Cardio',
-    'Back',
-    'Biceps',
-    'Triceps',
-    'Shoulders',
-    'Legs',
-    'Abs',
-    'Waist',
-    'Chest',
-    'Arms',
-    'Calves',
-    'Forearms',
-    'Glutes',
-    'Neck',
-    'Upper Arms',
-    'Lower Arms',
-    'Upper Legs',
-    'Lower Legs',
-    'Full Body',
-];
+    'back', 'cardio', 'chest', 'forearms', 'calves', 'neck',
+    'biceps', 'triceps', 'shoulders', 'spinal erectors', 'legs',
+    'quads'
+]
 
-export default function HomeScreen() {
-    const [selectedCategory, setSelectedCategory] = useState('Cardio');
-    const [exercises, setExercises] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const router = useState();
+export default function HomeScreen()
+{
+    const [selectedCategory, setSelectedCategory] = useState('chest')
+    const [exercises, setExercises] = useState([])
+    const [loading, setLoading] = useState(false)
+    const router = useRouter()
 
     const loadExercises = async () => {
-        setLoading(true);
-        const data = await fetchExercisesByBodyPart(selectedCategory);
-        setExercises(data);
-        setLoading(false);
-    };
+        setLoading(true)
+        const data = await fetchExercisesByBodyPart(selectedCategory)
+    }
 
     useEffect(() => {
-        loadExercises();
+        loadExercises()
+    }, [selectedCategory]);
 
-    }, [selectedCategory])
 
-    
-    const title = 'Головна сторінка';
+    const title = 'login'
 
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
+            flex: 1, justifyContent: 'center',
+            alignItems: 'center'
         },
         titleText: {
-            fontSize: 24,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            marginTop: 20,
-            color: 'purple',
-        },
+            fontSize: 16,
+            fontWeight: '500',
+            color: 'purple'
+        }
     })
 
     return (
