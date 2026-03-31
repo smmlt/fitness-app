@@ -1,15 +1,15 @@
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Platform, KeyboardAvoidingView} from 'react-native'
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import {auth} from "@/constants/FirebaseConfig";
-import {useRouter} from 'expo-router'
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithCredential, GoogleAuthProvider} from "@firebase/auth";
+import { auth } from "@/constants/FirebaseConfig";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "@firebase/auth";
+import { useRouter } from 'expo-router';
 
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+// import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-GoogleSignin.configure({
-    webClientId: '',
-});
+// GoogleSignin.configure({
+//     webClientId: '',
+// });
 
 export default  function Login()
 {
@@ -20,21 +20,21 @@ export default  function Login()
     const [isRegistering, setIsRegistering] = useState(false)
     const router = useRouter()
 
-    const googleSignIn = async () => {
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-
-        const signInResult = await GoogleSignin.signIn();
-
-        let idToken = signInResult.data?.idToken;
-
-        if (!idToken) {
-            throw new Error('No ID token found');
-        }
-
-        const googleCredential = GoogleAuthProvider.credential(idToken);
-
-        return signInWithCredential(auth, googleCredential);
-    }
+    // const googleSignIn = async () => {
+    //     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    //
+    //     const signInResult = await GoogleSignin.signIn();
+    //
+    //     let idToken = signInResult.data?.idToken;
+    //
+    //     if (!idToken) {
+    //         throw new Error('No ID token found');
+    //     }
+    //
+    //     const googleCredential = GoogleAuthProvider.credential(idToken);
+    //
+    //     return signInWithCredential(auth, googleCredential);
+    // }
 
     const handleAuth = async () => {
         if (!email || !password)
@@ -167,16 +167,16 @@ export default  function Login()
                 </TouchableOpacity>
 
 
-                <TouchableOpacity
-                    style={styles.mainButton}
-                    onPress={(e) => {
-                        googleSignIn()
-                    }}
-                >
-                    <Text style={styles.buttonText}>
-                         Sign in with Google
-                    </Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity*/}
+                {/*    style={styles.mainButton}*/}
+                {/*    onPress={(e) => {*/}
+                {/*        // googleSignIn()*/}
+                {/*    }}*/}
+                {/*>*/}
+                {/*    <Text style={styles.buttonText}>*/}
+                {/*         Sign in with Google*/}
+                {/*    </Text>*/}
+                {/*</TouchableOpacity>*/}
             </View>
         </KeyboardAvoidingView>
     )

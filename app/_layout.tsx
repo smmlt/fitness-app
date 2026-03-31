@@ -1,11 +1,10 @@
+import { auth } from '@/constants/FirebaseConfig';
+import { User, onAuthStateChanged } from "@firebase/auth";
 import { Stack, useRouter, useSegments } from "expo-router";
-import {useEffect, useState} from "react";
-import {auth} from '@/constants/FirebaseConfig'
-import {View, ActivityIndicator} from 'react-native'
-import {User, onAuthStateChanged} from "@firebase/auth";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, View } from 'react-native';
 
 
-import {Tabs} from "expo-router"
 
 export default function RootLayout() {
 

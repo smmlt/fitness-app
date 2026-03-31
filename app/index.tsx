@@ -1,6 +1,6 @@
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
-import {Redirect} from 'expo-router'
-import {auth} from '../constants/FirebaseConfig'
+import { Redirect } from 'expo-router'
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { auth } from '../constants/FirebaseConfig'
 export default  function Workout()
 {
     const title = 'Index'
